@@ -115,6 +115,9 @@ header {
   transition: transform .25s, background .25s;
 }
 .reel:hover .play { transform: scale(1.1); background: var(--accent); }
+.reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 1; }
+.reel-note { margin-top: 1rem; font-size: .85rem; color: var(--muted); }
+.reel-note a:hover { color: var(--text); }
 .play svg { width: 30px; height: 30px; margin-left: 4px; fill: #fff; }
 
 /* ============ 4. FEATURED WORK ============ */
@@ -135,6 +138,10 @@ header {
 @media (hover: none) { .card p { max-height: 5rem; opacity: 1; } }
 .card .mini-play { position: absolute; z-index: 2; top: 1rem; right: 1rem; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.25); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 .mini-play svg { width: 14px; height: 14px; fill: #fff; margin-left: 2px; }
+/* Embedded video cards */
+.videos { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+.video { position: relative; aspect-ratio: 16/9; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--card); }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* ============ 5. ABOUT / EXPERTISE ============ */
 .about { background: var(--bg-soft); border-block: 1px solid var(--border); }
@@ -205,13 +212,11 @@ footer { border-top: 1px solid var(--border); padding: 1.8rem 0; color: var(--mu
       <a href="#contact" class="btn btn-ghost">Let’s Talk</a>
     </div>
 
-    <!-- Replace this block with a <video> or an iframe embed of your reel -->
-    <div class="reel" role="img" aria-label="Showreel preview">
-      <a class="play" href="#work" aria-label="Play showreel">
-        <svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg>
-      </a>
-      <div class="reel-bar"><span>0:42</span><div class="track"><b></b></div><span>2:05 · Showreel 2026</span></div>
+    <!-- Reel: embedded Google Drive player -->
+    <div class="reel">
+      <iframe src="https://drive.google.com/file/d/1HlcoJLoMeBbNT4HX9KtgtX8srLxmOWWZ/preview" title="Showreel" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
     </div>
+    <p class="reel-note"><a href="https://drive.google.com/file/d/1HlcoJLoMeBbNT4HX9KtgtX8srLxmOWWZ/view?usp=sharing" target="_blank" rel="noopener noreferrer">Video not loading? Open it on Google Drive →</a></p>
   </div>
 </section>
 
@@ -223,41 +228,12 @@ footer { border-top: 1px solid var(--border); padding: 1.8rem 0; color: var(--mu
         <span class="eyebrow">Featured Work</span>
         <h2 class="grad">Recent projects</h2>
       </div>
-      <p class="lead">A selection of edits, effects and motion pieces. Hover a card for details.</p>
+      <p class="lead">A selection of my recent gaming edits.</p>
     </div>
 
-    <div class="grid">
-      <!-- Swap each --g gradient for a background-image: url(...) thumbnail -->
-      <article class="card">
-        <div class="thumb" style="--g: linear-gradient(135deg,#4338ca,#0e1230 70%)"></div>
-        <span class="mini-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
-        <div class="info"><span class="tag">Gaming Edit</span><h3>Clutch Montage Vol. 3</h3><p>Fast-paced highlight reel with beat-synced cuts, speed ramps and custom impact frames.</p></div>
-      </article>
-      <article class="card">
-        <div class="thumb" style="--g: linear-gradient(135deg,#0e7490,#06121a 70%)"></div>
-        <span class="mini-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
-        <div class="info"><span class="tag">VFX</span><h3>Energy Burst Compositing</h3><p>Particle bursts, glow passes and screen-space distortion composited into live footage.</p></div>
-      </article>
-      <article class="card">
-        <div class="thumb" style="--g: linear-gradient(135deg,#7c3aed,#140a26 70%)"></div>
-        <span class="mini-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
-        <div class="info"><span class="tag">Motion Design</span><h3>Channel Intro Pack</h3><p>Animated logo reveals, lower thirds and transitions built for a consistent brand look.</p></div>
-      </article>
-      <article class="card">
-        <div class="thumb" style="--g: linear-gradient(135deg,#be185d,#1a0814 70%)"></div>
-        <span class="mini-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
-        <div class="info"><span class="tag">Editing</span><h3>Long-form Documentary</h3><p>Story-driven pacing, sound design and color grading for a 12-minute YouTube feature.</p></div>
-      </article>
-      <article class="card">
-        <div class="thumb" style="--g: linear-gradient(135deg,#4f46e5,#06b6d4 60%,#0a0b12)"></div>
-        <span class="mini-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
-        <div class="info"><span class="tag">VFX</span><h3>3D Object Tracking</h3><p>Blender assets matched to camera moves with realistic shadows and reflections.</p></div>
-      </article>
-      <article class="card">
-        <div class="thumb" style="--g: linear-gradient(135deg,#1d4ed8,#0a0f24 70%)"></div>
-        <span class="mini-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
-        <div class="info"><span class="tag">Gaming Edit</span><h3>Shorts &amp; Reels Series</h3><p>Vertical edits with kinetic captions, built for retention on short-form platforms.</p></div>
-      </article>
+    <div class="grid videos">
+      <article class="video"><iframe src="https://drive.google.com/file/d/1NDvu7FGXUCHhafQU77dUWjIYsOPuoFKr/preview" title="Gaming edit 1" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></article>
+      <article class="video"><iframe src="https://drive.google.com/file/d/1Zthql2QJ8EUNltcaXnlLE8HC7NH7cqRH/preview" title="Gaming edit 2" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></article>
     </div>
   </div>
 </section>
